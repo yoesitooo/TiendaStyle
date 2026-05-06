@@ -1,10 +1,17 @@
 import React from 'react';
 import { Camera, Send, Globe, ArrowUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const navLinks = [
+    { name: 'Hombres', path: '/hombres' },
+    { name: 'Mujeres', path: '/mujeres' },
+    { name: 'Accesorios', path: '/accesorios' },
+  ];
 
   return (
     <footer className="bg-black pt-24 pb-12 border-t border-white/5">
@@ -12,11 +19,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           {/* Brand Info */}
           <div className="lg:col-span-1">
-            <a href="/" className="inline-block mb-8">
+            <Link to="/" className="inline-block mb-8">
               <span className="text-xl font-bold tracking-[0.3em] uppercase">
                 TIENDA<span className="text-gold">STYLE</span>
               </span>
-            </a>
+            </Link>
             <p className="text-zinc-500 text-sm leading-relaxed mb-8 max-w-xs">
               Elevando lo cotidiano a través del diseño minimalista y la manufactura artesanal desde 2026.
             </p>
@@ -33,13 +40,18 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-8">Navegación</h4>
             <ul className="flex flex-col gap-4">
-              {['Colecciones', 'Hombres', 'Mujeres', 'Accesorios', 'Lookbook'].map((link) => (
-                <li key={link}>
-                  <a href={`#${link.toLowerCase()}`} className="text-zinc-500 text-sm hover:text-white transition-colors">
-                    {link}
-                  </a>
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <Link to={link.path} className="text-zinc-500 text-sm hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
                 </li>
               ))}
+              <li>
+                <Link to="/" className="text-zinc-500 text-sm hover:text-white transition-colors">
+                  Inicio
+                </Link>
+              </li>
             </ul>
           </div>
 

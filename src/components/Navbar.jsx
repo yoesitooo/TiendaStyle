@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ShoppingBag, Search, User, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,10 +16,17 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const navLinks = [
+    { name: 'Inicio', path: '/' },
+    { name: 'Hombres', path: '/hombres' },
+    { name: 'Mujeres', path: '/mujeres' },
+    { name: 'Accesorios', path: '/accesorios' },
+  ];
+
   return (
     <nav 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? 'py-4 glass' : 'py-8 bg-transparent'
+        isScrolled || location.pathname !== '/' ? 'py-4 glass' : 'py-8 bg-transparent'
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
@@ -31,27 +40,31 @@ const Navbar = () => {
 
         {/* Navigation Links - Desktop */}
         <div className="hidden lg:flex items-center gap-8">
-          {['Colecciones', 'Hombres', 'Mujeres', 'Accesorios'].map((item) => (
-            <a 
-              key={item} 
-              href={`#${item.toLowerCase()}`}
-              className="text-sm font-medium uppercase tracking-widest text-zinc-400 hover:text-white transition-colors relative group"
+          {navLinks.map((item) => (
+            <Link 
+              key={item.name} 
+              to={item.path}
+              className={`text-sm font-medium uppercase tracking-widest transition-colors relative group ${
+                location.pathname === item.path ? 'text-gold' : 'text-zinc-400 hover:text-white'
+              }`}
             >
-              {item}
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full"></span>
-            </a>
+              {item.name}
+              <span className={`absolute -bottom-1 left-0 h-px bg-gold transition-all duration-300 ${
+                location.pathname === item.path ? 'w-full' : 'w-0 group-hover:w-full'
+              }`}></span>
+            </Link>
           ))}
         </div>
 
         {/* Logo */}
-        <a href="/" className="flex flex-col items-center group">
+        <Link to="/" className="flex flex-col items-center group">
           <span className="text-2xl font-bold tracking-[0.3em] uppercase transition-all duration-300 group-hover:tracking-[0.4em]">
             TIENDA<span className="text-gold">STYLE</span>
           </span>
           <span className="text-[10px] tracking-[0.5em] uppercase text-zinc-500 group-hover:text-gold transition-colors">
             Luxury Minimal
           </span>
-        </a>
+        </Link>
 
         {/* Icons */}
         <div className="flex items-center gap-6">

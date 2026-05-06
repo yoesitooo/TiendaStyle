@@ -9,14 +9,14 @@ const products = [
     name: 'Abrigo de Lana Minimalist',
     price: '$289.00',
     category: 'Outerwear',
-    image: 'https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1544022613-e87ce7526ed1?auto=format&fit=crop&q=80&w=800'
   },
   {
     id: 2,
     name: 'Camisa de Seda Blanca',
     price: '$145.00',
     category: 'Tops',
-    image: 'https://images.unsplash.com/photo-1598033129183-c4f50c7176c8?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=800'
   },
   {
     id: 3,
@@ -30,14 +30,14 @@ const products = [
     name: 'Bolsito de Cuero Negro',
     price: '$320.00',
     category: 'Accessories',
-    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=800'
   },
   {
     id: 5,
     name: 'Botas Chelsea Premium',
     price: '$240.00',
     category: 'Footwear',
-    image: 'https://images.unsplash.com/photo-1638247025967-b4e38f787b76?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1638247025967-b4e38f787b76?auto=format&fit=crop&q=80&w=800'
   }
 ];
 

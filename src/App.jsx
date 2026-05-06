@@ -1,32 +1,32 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import BentoCategories from './components/BentoCategories';
-import FeaturedCarousel from './components/FeaturedCarousel';
-import Newsletter from './components/Newsletter';
 import Footer from './components/Footer';
+import Home from './pages/Home';
+import Men from './pages/Men';
+import Women from './pages/Women';
+import Accessories from './pages/Accessories';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
-    <div className="min-h-screen bg-background text-white selection:bg-gold/30 selection:text-gold">
-      <Navbar />
-      
-      <main>
-        <Hero />
+    <Router>
+      <div className="min-h-screen bg-background text-white selection:bg-gold/30 selection:text-gold">
+        <ScrollToTop />
+        <Navbar />
         
-        <div id="colecciones">
-          <BentoCategories />
-        </div>
-        
-        <div id="destacados">
-          <FeaturedCarousel />
-        </div>
-        
-        <Newsletter />
-      </main>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/hombres" element={<Men />} />
+            <Route path="/mujeres" element={<Women />} />
+            <Route path="/accesorios" element={<Accessories />} />
+          </Routes>
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
